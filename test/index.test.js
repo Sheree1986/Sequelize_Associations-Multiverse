@@ -79,7 +79,7 @@ describe("Sequelize Tests", () => {
        
     });
 
-    describe("Associations", () => {
+    describe("Associations of Models", () => {
         test("Customer can have many Products", async () => {
             await demoDB.sync({force:true});
             let customer1 = {
@@ -223,7 +223,7 @@ describe("Sequelize Tests", () => {
         });
     });
 
-    describe("Eager Loading or Joining the Data", () => {
+    describe("Eager Loading Models", () => {
         test("Eager Loading Customers with Products", async () => {
             await demoDB.sync({force:true});
             let customer1 = {
