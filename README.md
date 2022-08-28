@@ -7,6 +7,6 @@
 - We cover creating a Model for these 3 tables, establishing their associations, and testing your code as we go along!
 
 ## Slides
-Here the [Slides])() for today's lesson
+Here the [Slides]() for today's lesson
 
 ### Resources
