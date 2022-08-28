@@ -104,10 +104,36 @@ const Sequelize = require("sequelize");
 
 // Method 1: Extending the Class Model
 
-class Customers extends Model {}
+// class Customers extends Model {}
 
-Customers.init({
-    // id
+// Customers.init({
+//     // id
+//     id: {
+//         type: Sequelize.INTEGER, // INT
+//         autoIncrement: true, // AUTO_INCREMENT
+//         primaryKey: true // PRIMARY KEY
+//     },
+//     // first_name
+//     first_name: {
+//         type: Sequelize.STRING, // VARCHAR(x)
+//         default: "John" // DEFAULT "John"
+//     },
+//     // last_name
+//     last_name: {
+//         type: Sequelize.STRING, // VARCHAR(x)
+//         default: "Doe" // DEFAULT "Doe"
+//     },
+//     // age
+//     age: {
+//         type: Sequelize.INTEGER, // INT
+//         allowNull: false // NOT NULL
+//     }
+// });
+
+// Method 2: Using the .define() method. This will implicitly convert into the class to create the Model instance for you to define your tables in your DB.
+
+const Customers = demoDB.define("customers", {
+    //id
     id: {
         type: Sequelize.INTEGER, // INT
         autoIncrement: true, // AUTO_INCREMENT
@@ -129,3 +155,7 @@ Customers.init({
         allowNull: false // NOT NULL
     }
 });
+
+module.exports = {
+    Customers
+}
