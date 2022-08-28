@@ -14,24 +14,31 @@ const Sequelize = require("sequelize");
 /* 
     You can extend the Model Class. Which means whatever you create IS A model
     You just define the "init" method of the Model class on your instance to actually define the specs of your table
+
+      - In SQL, the following query is what we are accomplishing here: 
+        CREATE TABLE customers (
+            first_name: VARCHAR(20), 
+            last_name: VARCHAR(20), 
+            age: INT
+        );
 */
 
-class Customers extends Model {}
+// class Customers extends Model {}
 
-Customers.init({
-    first_name: {
-        type: Sequelize.STRING
-    }, 
-    last_name: {
-        type: Sequelize.STRING
-    },
-    age: {
-       type: Sequelize.INTEGER
-    }
-},{
-    demoDB,
-    modelName: "customers"
-});
+// Customers.init({
+//     first_name: {
+//         type: Sequelize.STRING
+//     }, 
+//     last_name: {
+//         type: Sequelize.STRING
+//     },
+//     age: {
+//        type: Sequelize.INTEGER
+//     }
+// },{
+//     demoDB,
+//     modelName: "customers"
+// });
 
 /* This is the simplest way to do it
 
@@ -81,3 +88,44 @@ Customers.init({
 //     }
 // })
 
+/*
+    It's actually so cool, that this gets very specific with SQL. For example: 
+    In SQL:
+
+    CREATE TABLE customers (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        first_name VARCHAR(20) DEFAULT "John",
+        last_name VARCHAR(20) DEFAULT "Doe",
+        age INT NOT NULL
+    )
+
+    ^^ That is a semi complicated query. But we can still replicate in using Sequelize
+*/
+
+// Method 1: Extending the Class Model
+
+class Customers extends Model {}
+
+Customers.init({
+    // id
+    id: {
+        type: Sequelize.INTEGER, // INT
+        autoIncrement: true, // AUTO_INCREMENT
+        primaryKey: true // PRIMARY KEY
+    },
+    // first_name
+    first_name: {
+        type: Sequelize.STRING, // VARCHAR(x)
+        default: "John" // DEFAULT "John"
+    },
+    // last_name
+    last_name: {
+        type: Sequelize.STRING, // VARCHAR(x)
+        default: "Doe" // DEFAULT "Doe"
+    },
+    // age
+    age: {
+        type: Sequelize.INTEGER, // INT
+        allowNull: false // NOT NULL
+    }
+});
