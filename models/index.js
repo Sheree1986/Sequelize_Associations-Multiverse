@@ -1,6 +1,6 @@
-const {Customers} = require("./Customers");
-const {Products} = require("./Products");
-
+const {Customer} = require("./Customers");
+const {Product} = require("./Products");
+const {Order} = require("./Orders");
 
 // This is the first table that introduce the need to "associate"...
 // I know this, because I have several foreign keys in this table
@@ -30,17 +30,20 @@ const {Products} = require("./Products");
 
 // This means that the association that I want to create is going to look like this: 
 
+// With one to one, both tables should have the same number of rows and each row is linked to each other
+// With one to many, the parent table should have less rows, because its being used over and over in the child table
+// With many to many, there are more than one parent table being referenced from the child table. Usually a third table is used in order to keep this reference which is why many to many needs a third table to work with.
 
-Products.belongTo(Customers);
-Customers.hasMany(Products);
+
 
 // This is for the Orders Table
-Customers.belongsToMany(Products, { through: 'Orders' });
-Products.belongsToMany(Customers, { through: 'Orders' });
+Customer.belongsToMany(Product, { through: 'Order', foreignKey: "customer_id" });
+Product.belongsToMany(Customer, { through: 'Order', foreignKey: "product_id" });
 
 module.exports = {
-    Customers,
-    Products
+    Customer,
+    Product,
+    Order
 }
 
 

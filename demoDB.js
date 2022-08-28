@@ -3,6 +3,7 @@
  - This import will allow you to use the Sequelize Class, without having defined it yourself
 */
 const {Sequelize} = require("sequelize");
+const path = require('path');
 
 /*
  - We can create an instance of our Sequelize Class, which will represent our database. 

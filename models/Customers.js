@@ -132,7 +132,7 @@ const Sequelize = require("sequelize");
 
 // Method 2: Using the .define() method. This will implicitly convert into the class to create the Model instance for you to define your tables in your DB.
 
-const Customers = demoDB.define("customers", {
+const Customer = demoDB.define("customers", {
     //id
     id: {
         type: Sequelize.INTEGER, // INT
@@ -157,5 +157,5 @@ const Customers = demoDB.define("customers", {
 });
 
 module.exports = {
-    Customers
+    Customer
 }

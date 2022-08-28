@@ -25,7 +25,7 @@ const Sequelize = require("sequelize");
 
 
 // Using Define
-const Products = demoDB.define("products", {
+const Product = demoDB.define("products", {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -42,5 +42,5 @@ const Products = demoDB.define("products", {
 })
 
 module.exports = {
-    Products
+    Product
 }
