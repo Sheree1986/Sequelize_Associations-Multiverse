@@ -40,3 +40,7 @@ const Products = demoDB.define("products", {
         defaultValue: 9.99
     }
 })
+
+module.exports = {
+    Products
+}
