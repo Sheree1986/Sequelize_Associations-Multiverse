@@ -288,9 +288,6 @@ describe("Sequelize Tests", () => {
 
             expect(loadedCustomerData[0].products.length).toBe(3);
             
- 
-            
-            
          });
     });
  });
