@@ -142,12 +142,12 @@ const Customers = demoDB.define("customers", {
     // first_name
     first_name: {
         type: Sequelize.STRING, // VARCHAR(x)
-        default: "John" // DEFAULT "John"
+        defaultValue: "John" // DEFAULT "John"
     },
     // last_name
     last_name: {
         type: Sequelize.STRING, // VARCHAR(x)
-        default: "Doe" // DEFAULT "Doe"
+        defaultValue: "Doe" // DEFAULT "Doe"
     },
     // age
     age: {

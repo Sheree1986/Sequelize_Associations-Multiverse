@@ -33,10 +33,10 @@ const Products = demoDB.define("products", {
     },
     product_name: {
         type: Sequelize.STRING,
-        default: "Pen"
+        defaultValue: "Pen"
     },
     product_price: {
         type: Sequelize.DECIMAL(5,2),
-        default: 9.99
+        defaultValue: 9.99
     }
 })

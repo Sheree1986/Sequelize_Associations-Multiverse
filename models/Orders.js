@@ -19,3 +19,8 @@ const {demoDB} = require("../demoDB");
         FOREIGN KEY (productID) REFERENCES products(id)
     )
 */
+
+// This is the first table that introduce the need to "associate"...
+// I know this, because I have several foreign keys in this table
+// Self Note, if it is, then I'm kinf of hype about my own lesson, because this is solidifying this HARD
+
