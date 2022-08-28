@@ -222,5 +222,77 @@ describe("Sequelize Tests", () => {
             expect(customer1Check.length).toBe(3);
         });
     });
+
+    describe("Eager Loading or Joining the Data", () => {
+        test("Eager Loading Customers with Products", async () => {
+            await demoDB.sync({force:true});
+            let customer1 = {
+                first_name: "John", 
+                last_name: "Snow",
+                age: 29
+            }
+
+            let customer2 = {
+                first_name: "Johnny",
+                last_name: "Bravo",
+                age: 23
+            }
+
+            let customer3 = {
+                first_name: "Brock",
+                last_name: "Lesnar",
+                age: 40
+            }
+
+            let product1 = {
+                product_name: "Pen",
+                product_price: 4.99
+            };
+
+            let product2 = {
+                product_name: "Notebook",
+                product_price: 9.99
+            };
+
+            let product3 = {
+                product_name: "Printer",
+                product_price: 49.99
+            };
+
+            let productList = await Product.bulkCreate([product1, product2, product3]);
+            let customerList = await Customer.bulkCreate([customer1, customer2, customer3]);
+
+            let firstCustomer = await customerList[0];
+            let secondCustomer = await customerList[1];
+            let thirdCustomer = await customerList[2];
+            let firstProduct = await productList[0];
+            let secondProduct = await productList[1];
+            let thirdProduct = await productList[2];
+
+
+            await firstCustomer.addProducts(secondProduct);
+            await firstCustomer.addProducts(thirdProduct);
+            await secondCustomer.addProducts(secondProduct);
+            await secondCustomer.addProducts(firstProduct);
+
+            await firstProduct.addCustomers(firstCustomer);
+            await firstProduct.addCustomers(thirdCustomer);
+            await secondProduct.addCustomers(secondCustomer);
+            // await secondProduct.addCustomers(firstCustomer);
+
+            
+            let loadedCustomerData = await Customer.findAll({
+                    include: [{model: Product, as: 'products'}]
+            });
+           
+
+            expect(loadedCustomerData[0].products.length).toBe(3);
+            
+ 
+            
+            
+         });
+    });
+ });
     
-});
+    
