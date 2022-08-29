@@ -1,5 +1,5 @@
 const {demoDB} = require("../demoDB");
-const Sequelize = require("sequelize");
+const {Sequelize, Model} = require("sequelize");
 
 /*
     A Model is a Table in your Database
