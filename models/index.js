@@ -1,6 +1,8 @@
 const {Customer} = require("./Customers");
 const {Product} = require("./Products");
 const {Order} = require("./Orders");
+const { Trainer } = require("./Trainer");
+const { Pokemon } = require("./Pokemon");
 
 // This is the first table that introduce the need to "associate"...
 // I know this, because I have several foreign keys in this table
@@ -40,10 +42,15 @@ const {Order} = require("./Orders");
 Customer.belongsToMany(Product, { through: 'Order', foreignKey: "customer_id" });
 Product.belongsToMany(Customer, { through: 'Order', foreignKey: "product_id" });
 
+Trainer.hasMany(Pokemon);
+Pokemon.belongsTo(Trainer);
+
 module.exports = {
     Customer,
     Product,
-    Order
+    Order,
+    Trainer,
+    Pokemon
 }
 
 
